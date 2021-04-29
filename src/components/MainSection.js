@@ -6,10 +6,10 @@ import Background from './Background';
 import ItemSelection from './ItemSelection';
 import Footer from './Footer';
 
-const MainSection = () => {
+const MainSection = ({ toggleTheme }) => {
   return (
     <Background>
-      <Heading />
+      <Heading toggleTheme={toggleTheme} />
       <InputForm />
       <TodoList />
       <ItemSelection />

@@ -8,25 +8,35 @@ const InputElement = styled.div`
   width: 90vw;
   display: flex;
   flex-direction: row;
-
-  background: #ffffff;
+  background: ${({ theme }) => theme.backgroundColor};
   justify-content: space-around;
   align-items: center;
   box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
   border-radius: 5px;
+  .outer-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.backgroundColor};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background-image: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+      cursor: pointer;
+    }
+  }
   .circle {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    margin-top: -4px;
-    margin-left: 1rem;
+    margin-top: 0px;
+    margin-left: 0rem;
     border: 1px solid hsl(233, 11%, 84%);
-  }
-  .circle:hover {
-    border: 1px solid;
-    border-image-source: radial-gradient(rgb(0, 143, 104), rgb(250, 224, 66));
-    border-image-slice: 1;
-    cursor: pointer;
+    background: ${({ theme }) => theme.backgroundColor};
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
   }
 `;
 
@@ -36,6 +46,7 @@ const FormField = styled.form`
     width: 65vw;
     border: none;
     outline: none;
+    background: ${({ theme }) => theme.backgroundColor};
   }
   .visually-hidden {
     border: 0;
@@ -54,7 +65,9 @@ const InputForm = () => {
 
   return (
     <InputElement>
-      <div className="circle"></div>
+      <div className="outer-circle">
+        <div className="circle"></div>
+      </div>
       <FormField onSubmit={addTodo}>
         <label htmlFor="input-text" className="visually-hidden">
           create a to do list

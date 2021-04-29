@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './themes/themeVariable';
+import { useDarkMode } from './useDarkMode';
+
+import { lightTheme, darkTheme } from './themes/themeVariable';
 import GlobalStyle from './themes/GlobalStyle';
+
 import Provider from './context';
-import initTodoData from './todoData';
 
 import MainSection from './components/MainSection';
 
 function App() {
+  const [theme, toggleTheme] = useDarkMode();
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <Provider>
-        <MainSection />
+        <MainSection toggleTheme={toggleTheme} />
       </Provider>
     </ThemeProvider>
   );

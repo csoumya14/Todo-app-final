@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Footerdiv = styled.div`
   text-align: center;
-  margin-top: 40px;
+  margin-top: 20px;
   .drag-instruction {
     font-size: 14px;
     line-height: 14px;

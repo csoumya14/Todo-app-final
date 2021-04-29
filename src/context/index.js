@@ -11,7 +11,7 @@ const Provider = ({ children }) => {
   const addTodo = (event) => {
     event.preventDefault();
     const todoObject = {
-      id: new Date().getTime(),
+      _id: new Date().getTime(),
       task: newTask,
       completed: false,
     };
@@ -24,12 +24,12 @@ const Provider = ({ children }) => {
   };
 
   const deleteTodo = (item) => {
-    const filteredItem = todos.filter((i) => i.id !== item.id);
+    const filteredItem = todos.filter((i) => i._id !== item._id);
     setTodos(filteredItem);
   };
 
   const completeTodo = (id) => {
-    const idx = todos.findIndex((todo) => todo.id === id);
+    const idx = todos.findIndex((todo) => todo._id === id);
     const newTodos = [...todos];
     newTodos[idx].completed = !newTodos[idx].completed;
     setTodos(newTodos);
@@ -40,19 +40,18 @@ const Provider = ({ children }) => {
     setTodos(completedItems);
   };
 
-  const allButton = (item) => {
-    setTodos(todos);
-  };
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
 
-  const activeButton = (item) => {
-    const ActiveItems = todos.filter((i) => i.completed !== true);
-    setTodos(ActiveItems);
+    const listItems = [...todos];
+    const [reorderedItem] = listItems.splice(result.source.index, 1);
+    listItems.splice(result.destination.index, 0, reorderedItem);
+    setTodos(listItems);
   };
 
   useEffect(() => {
     const storedTodos = localStorage.getItem('todos');
     setTodos(storedTodos !== null ? JSON.parse(storedTodos) : initTodoData);
-    localStorage.clear();
   }, []);
 
   useEffect(() => {
@@ -72,6 +71,7 @@ const Provider = ({ children }) => {
     clearComplete,
     setState,
     state,
+    handleOnDragEnd,
   };
   return <Context.Provider value={ContextValue}>{children}</Context.Provider>;
 };

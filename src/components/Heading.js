@@ -18,7 +18,7 @@ const HeadingAndButton = styled.div`
     letter-spacing: 18px;
   }
   .button-element {
-    background-image: url(${moonIcon});
+    background-image: ${({ theme }) => theme.backgroundImage};
     background-size: cover;
     background-color: transparent;
     border: none;
@@ -37,11 +37,11 @@ const HeadingAndButton = styled.div`
   }
 `;
 
-const Heading = () => {
+const Heading = ({ toggleTheme }) => {
   return (
     <HeadingAndButton>
       <h1 className="heading-element">todo</h1>
-      <button className="button-element">
+      <button className="button-element" onClick={toggleTheme}>
         {' '}
         <span className="visually-hidden">Click button to display details</span>
       </button>

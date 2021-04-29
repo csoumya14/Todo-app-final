@@ -8,9 +8,9 @@ const SelectionButtons = styled.div`
   height: 48px;
   border: none;
   margin-top: 1rem;
-  background-color: #fff;
+  background: ${({ theme }) => theme.backgroundColor};
   border-radius: 5px;
-  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+  box-shadow: ${({ theme }) => theme.boxShadow};
   margin-left: 24px;
   display:flex;
   justify-content:center;
@@ -31,8 +31,8 @@ const SelectionButtons = styled.div`
 `;
 
 const ItemSelection = () => {
-  const { setState, state } = useContext(Context);
-  console.log(state);
+  const { setState } = useContext(Context);
+
   return (
     <SelectionButtons>
       <div className="buttons">

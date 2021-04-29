@@ -6,11 +6,11 @@ import TodoItem from './TodoItem';
 const ToList = styled.div`
   margin-top: 1rem;
   margin-left: 24px;
-  background-color: #fff;
+  background: ${({ theme }) => theme.backgroundColor};
   border-radius: 5px;
   width: 90%;
   box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
-
+  box-shadow: ${({ theme }) => theme.boxShadow};
   .number-items-clear-complete {
     display: flex;
     flex-direction: row;
@@ -54,6 +54,3 @@ const TodoList = () => {
 };
 
 export default TodoList;
-/*
-
-      */

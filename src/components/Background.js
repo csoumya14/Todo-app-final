@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import img from '../assets/bg-mobile-light.jpg';
 
 const Container = styled.div`
-  background-image: url(${img});
+  background-image: ${({ theme }) => theme.mainBackgroundImage};
+  background-color: ${({ theme }) => theme.mainBackgroundColor};
   background-repeat: no-repeat;
   background-position: top;
   background-size: contain;
@@ -19,6 +20,3 @@ const Background = ({ children }) => {
 };
 
 export default Background;
-/*background-image: url(${backgroundImg});
-
-*/
