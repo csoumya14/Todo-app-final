@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Context } from '../context';
+import Button from './Button/ButtonWithText';
+
 const SelectionButtons = styled.div`
   display:flex:
   flex-direction:row;
@@ -14,40 +16,25 @@ const SelectionButtons = styled.div`
   margin-left: 24px;
   display:flex;
   justify-content:center;
- .buttons{
-   display:flex;
-   flex-direction:row;  
- }
- .buttons button{
-   border:none;
-   background:transparent;
-   font-size: 14px;
-   line-height:14px;
-   letter-spacing:-0.194444px;
-   color:#9495A5;
-   font-family: inherit;
- }
+  align-items:center;
   
 `;
 
 const ItemSelection = () => {
   const { setState } = useContext(Context);
+  const clearButton = false;
 
   return (
     <SelectionButtons>
-      <div className="buttons">
-        <button className="all-button" onClick={() => setState(0)}>
-          All
-        </button>
-
-        <button className="active-button" onClick={() => setState(1)}>
-          Active
-        </button>
-
-        <button className="complete-button" onClick={() => setState(2)}>
-          Completed
-        </button>
-      </div>
+      <Button onClick={() => setState(0)} clearButton={clearButton}>
+        All
+      </Button>
+      <Button onClick={() => setState(1)} clearButton={clearButton}>
+        Active
+      </Button>
+      <Button onClick={() => setState(2)} clearButton={clearButton}>
+        Completed
+      </Button>
     </SelectionButtons>
   );
 };

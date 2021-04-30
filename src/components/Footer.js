@@ -1,22 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import Text from './Text/Text';
 
-const Footerdiv = styled.div`
+const FooterDiv = styled.div`
   text-align: center;
   margin-top: 20px;
-  .drag-instruction {
-    font-size: 14px;
-    line-height: 14px;
-    letter-spacing: -0.194444px;
-    color: #9495a5;
-  }
 `;
 
 const Footer = () => {
+  const dragInstruction = true;
   return (
-    <Footerdiv>
-      <p className="drag-instruction">Drag and drop to reorder list</p>
-    </Footerdiv>
+    <FooterDiv>
+      <Text dragInstruction={dragInstruction}>Drag and drop to reorder list</Text>
+    </FooterDiv>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Heading from './Heading';
-import InputForm from './InputForm';
+import InputForm from './InputForm/InputForm';
 import TodoList from './TodoList';
 import Background from './Background';
 import ItemSelection from './ItemSelection';

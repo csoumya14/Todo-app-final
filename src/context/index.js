@@ -8,7 +8,7 @@ const Provider = ({ children }) => {
   const [newTask, setNewTask] = useState('');
   const [state, setState] = useState(0); // 0 = All, 1 = Active, 2 = Completed
 
-  const addTodo = (event) => {
+  const addTodo = event => {
     event.preventDefault();
     const todoObject = {
       _id: new Date().getTime(),
@@ -19,28 +19,32 @@ const Provider = ({ children }) => {
     setNewTask('');
   };
 
-  const handleTaskChange = (event) => {
+  const handleTaskChange = event => {
     setNewTask(event.target.value);
   };
 
-  const deleteTodo = (item) => {
-    const filteredItem = todos.filter((i) => i._id !== item._id);
+  const deleteTodo = item => {
+    const filteredItem = todos.filter(i => i._id !== item._id);
     setTodos(filteredItem);
   };
 
-  const completeTodo = (id) => {
-    const idx = todos.findIndex((todo) => todo._id === id);
+  const completeTodo = id => {
+    const idx = todos.findIndex(todo => todo._id === id);
     const newTodos = [...todos];
     newTodos[idx].completed = !newTodos[idx].completed;
     setTodos(newTodos);
   };
 
-  const clearComplete = (item) => {
-    const completedItems = todos.filter((i) => i.completed !== true);
+  const clearComplete = item => {
+    const completedItems = todos.filter(i => i.completed !== true);
     setTodos(completedItems);
   };
 
-  const handleOnDragEnd = (result) => {
+  const OnClickSetState = value => {
+    setState(value);
+  };
+
+  const handleOnDragEnd = result => {
     if (!result.destination) return;
 
     const listItems = [...todos];
@@ -72,6 +76,7 @@ const Provider = ({ children }) => {
     setState,
     state,
     handleOnDragEnd,
+    OnClickSetState,
   };
   return <Context.Provider value={ContextValue}>{children}</Context.Provider>;
 };

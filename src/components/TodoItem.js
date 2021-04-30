@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Context } from '../context';
-import crossIcon from '../assets/icon-cross.svg';
-import checkIcon from '../assets/icon-check.svg';
+import Button from './Button/CheckButton';
+import CrossButton from './Button/CrossButton';
+import VisuallyHiddenSpan from './ForAccessibility/SpanElement';
 import { Droppable, DragDropContext, Draggable } from 'react-beautiful-dnd';
 
 const ListItem = styled.div`
@@ -21,17 +22,6 @@ const ListItem = styled.div`
     padding-top: 0rem;
     padding-bottom: 20px;
   }
-
-  .visually-hidden {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px 1px 1px 1px);
-  }
 `;
 
 const OuterCircle = styled.div`
@@ -48,18 +38,6 @@ const OuterCircle = styled.div`
   }
 `;
 
-const RoundButton = styled.button`
-  background-image: url(${checkIcon}),
-    linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-  background: ${({ isCompleted }) => (isCompleted ? '' : 'transparent')};
-  background-size: fit;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid hsl(233, 11%, 84%);
-`;
 const Task = styled.div`
   position: absolute;
   margin-left: 44px;
@@ -71,15 +49,6 @@ const Task = styled.div`
   background: ${({ theme }) => theme.backgroundColor};
   color: ${({ theme, isCompleted }) => (isCompleted ? theme.strikedColor : theme.listTextColor)};
   font-weight: 400;
-`;
-const CrossButton = styled.button`
-  background-image: url(${crossIcon});
-  background-size: cover;
-  background-color: transparent;
-  visibility: ${({ isCompleted }) => (isCompleted ? 'visible' : 'hidden')};
-  border: none;
-  width: 11.79px;
-  height: 11.79px;
 `;
 
 const TodoItem = () => {
@@ -100,15 +69,15 @@ const TodoItem = () => {
             {...provided.dragHandleProps}
           >
             <OuterCircle>
-              <RoundButton onClick={() => completeTodo(item._id)} isCompleted={item.completed}>
-                <span className="visually-hidden">Click button to mark item as completed</span>
-              </RoundButton>
+              <Button onClick={() => completeTodo(item._id)} isCompleted={item.completed}>
+                <VisuallyHiddenSpan>Click button to mark item as completed</VisuallyHiddenSpan>
+              </Button>
             </OuterCircle>
             <Task isCompleted={item.completed} className="task">
               {item.task}
             </Task>
             <CrossButton onClick={() => deleteTodo(item)} isCompleted={item.completed}>
-              <span className="visually-hidden">Click button to remove item</span>
+              <VisuallyHiddenSpan>Click button to remove item</VisuallyHiddenSpan>
             </CrossButton>
           </li>
         )}

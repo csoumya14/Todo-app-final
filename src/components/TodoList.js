@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Context } from '../context';
 import TodoItem from './TodoItem';
+import Button from './Button/ButtonWithText';
+import Text from './Text/Text';
 
 const ToList = styled.div`
   margin-top: 1rem;
@@ -38,16 +40,18 @@ const ToList = styled.div`
 
 const TodoList = () => {
   const { todos, clearComplete } = useContext(Context);
+  const clearButton = true;
+  const dragInstruction = false;
   return (
     <ToList>
       <TodoItem />
       <div className="number-items-clear-complete">
-        <p className="item-left">
+        <Text className="item-left" dragInstruction={dragInstruction}>
           <span>{todos.length}</span> items left
-        </p>
-        <button className="clear-button" onClick={() => clearComplete(todos)}>
+        </Text>
+        <Button onClick={() => clearComplete(todos)} clearButton={clearButton}>
           Clear completed
-        </button>
+        </Button>
       </div>
     </ToList>
   );

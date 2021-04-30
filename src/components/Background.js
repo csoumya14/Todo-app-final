@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import img from '../assets/bg-mobile-light.jpg';
 
 const Container = styled.div`
   background-image: ${({ theme }) => theme.mainBackgroundImage};
