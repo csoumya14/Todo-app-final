@@ -13,10 +13,19 @@ const SelectionButtons = styled.div`
   background: ${({ theme }) => theme.backgroundColor};
   border-radius: 5px;
   box-shadow: ${({ theme }) => theme.boxShadow};
-  margin-left: 24px;
+  
   display:flex;
   justify-content:center;
   align-items:center;
+  @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
+    margin-top: -5rem;
+    width: 55%;
+    justify-content: center;
+  }
+  @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
+    width: 10%;
+    margin-top:-3rem;
+  }
   
 `;
 

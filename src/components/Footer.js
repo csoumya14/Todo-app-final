@@ -5,6 +5,9 @@ import Text from './Text/Text';
 const FooterDiv = styled.div`
   text-align: center;
   margin-top: 20px;
+  @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
+    margin-top: 5rem;
+  }
 `;
 
 const Footer = () => {

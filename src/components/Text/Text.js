@@ -7,6 +7,9 @@ const TextLine = styled.p`
   letter-spacing: ${({ dragInstruction }) => (dragInstruction ? '-0.194444px' : '-0.166667px')};
   margin-left: ${({ dragInstruction }) => (dragInstruction ? '0px' : '24px')};
   color: #9495a5;
+  @media (min-width: ${({ theme }) => theme.mediaSize.s}) {
+    font-size: ${({ dragInstruction }) => (dragInstruction ? '18px' : '15px')};
+  }
 `;
 
 const Text = ({ children, dragInstruction }) => (

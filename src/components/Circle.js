@@ -26,6 +26,9 @@ const OuterCircle = styled.div`
     height: 20px;
     border-radius: 50%;
   }
+  @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
+    margin-left: 2rem;
+  }
 `;
 
 const Circle = () => (

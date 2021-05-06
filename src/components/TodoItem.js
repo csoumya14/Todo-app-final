@@ -49,6 +49,9 @@ const Task = styled.div`
   background: ${({ theme }) => theme.backgroundColor};
   color: ${({ theme, isCompleted }) => (isCompleted ? theme.strikedColor : theme.listTextColor)};
   font-weight: 400;
+  @media (min-width: ${({ theme }) => theme.mediaSize.s}) {
+    font-size: 15px;
+  }
 `;
 
 const TodoItem = () => {

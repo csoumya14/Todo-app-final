@@ -10,6 +10,9 @@ const ButtonElement = styled.button`
   letter-spacing: ${({ clearButton }) => (clearButton ? '-0.166667px' : '-0.194444px')};
   color: #9495a5;
   font-family: inherit;
+  @media (min-width: ${({ theme }) => theme.mediaSize.s}) {
+    font-size: ${({ clearButton }) => (clearButton ? '15px' : '18px')};
+  }
 `;
 
 const Button = ({ children, onClick, clearButton }) => (

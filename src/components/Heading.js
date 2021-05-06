@@ -10,18 +10,15 @@ const HeadingAndButton = styled.div`
   width: 85%;
   height: 20px;
   justify-content: space-between;
+
   align-items: center;
   margin-top: 48px;
   margin-left: 26px;
-  .visually-hidden {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px 1px 1px 1px);
+  @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
+    width: 50%;
+  }
+  @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
+    width: 30%;
   }
 `;
 

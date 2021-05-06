@@ -8,6 +8,11 @@ const FormField = styled.form`
     border: none;
     outline: none;
     background: ${({ theme }) => theme.backgroundColor};
+
+    @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
+      width: 100%;
+      margin-left: 1rem;
+    }
   }
   .visually-hidden {
     border: 0;
